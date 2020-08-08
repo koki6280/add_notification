@@ -1,0 +1,35 @@
+<div class="container" style="margin-top: 100px;">
+	<div class="row">
+        <h2>新規投稿ページ</h2>
+            <%= form_for(@diary) do |f| %>
+        <div class="field">
+            <%= f.label :body, '本文' %>
+            <%= f.text_field :body, class: "diary_body" %>
+        </div>
+        <div class="field">
+        	<%= f.label :image, 'メディア' %>
+		    <%= f.attachment_field :body_image, class: "body_image" %>
+        </div>
+        <div class="field">
+        	<%= f.number_field :exercise , placeholder: "運動時間" %>
+        </div>
+        
+        <div class="field">
+        	<%= f.number_field :sleep , placeholder: "睡眠時間" %>
+        </div>
+
+        <div class="field">
+        	<%= f.number_field :cigarette , placeholder: "喫煙本数" %>
+        </div>
+
+        <div class="field">
+        	<%= f.number_field :drinking , placeholder: "飲酒量" %>
+        </div>
+
+        <div class="field">
+        	<%= f.submit '投稿' %>
+        </div>
+
+        <% end %>
+    </div>
+</div>

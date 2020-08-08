@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  body_image_id: MyString
+  exercise: MyString
+  sleep: MyString
+  cigarette: MyString
+  drinking: MyString
+
+two:
+  body: MyText
+  body_image_id: MyString
+  exercise: MyString
+  sleep: MyString
+  cigarette: MyString
+  drinking: MyString
