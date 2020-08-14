@@ -66,7 +66,18 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
-gem 'lazy_high_charts'
 gem 'dotenv-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'chartkick'
+gem 'lazy_high_charts'
+gem 'recaptcha', require: "recaptcha/rails"
+gem 'devise-i18n'
+gem 'rails-i18n'
+
+group :production do
+  gem 'mysql2'
+end
+
+
