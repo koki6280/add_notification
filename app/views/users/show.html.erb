@@ -8,10 +8,12 @@
 			</tr>
 		</table>
 		<%= link_to '編集', edit_user_path(@user) %>
+		<%= link_to 'マイカレンダー', my_calendar_path(@user) %>
 
 		<table class="table table-bordered">
 			<thead>
 				<tr>
+					<th>タグ</th>
 					<th>メディア</th>
 					<th>投稿内容</th>
 					<th>運動時間</th>
@@ -25,6 +27,7 @@
 			<tbody>
 				<% @diaries.each do |diary| %>
 				<tr>
+					<td><%= render 'diaries/tag_list', tag_list: diary.tag_list %></td>
 					<td><%= attachment_image_tag(diary, :body_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
 					<td><%= diary.body %></td>
 					<td><%= diary.exercise %>時間</td>
@@ -38,5 +41,6 @@
 				<% end %>
 			</tbody>
 		</table>
+		<%= high_chart('sample', @graph) %>
 	</div>
 </div>

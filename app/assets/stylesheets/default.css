@@ -2,3 +2,12 @@
 	color: #fff;
 	font-size: 40px;
 }
+
+.devise_post {
+	margin: 70px 400px 0px 400px;
+}
+
+.datetime-form {
+  display: inline-block;
+  width: auto;
+}

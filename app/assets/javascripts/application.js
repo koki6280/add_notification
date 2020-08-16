@@ -15,4 +15,11 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
+//= require moment
+//= require fullcalendar
 //= require_tree .
+//= require chartkick
+//= require Chart.bundle
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/highstock

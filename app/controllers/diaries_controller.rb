@@ -12,11 +12,16 @@ class DiariesController < ApplicationController
 	end
 
 	def index
-		@diaries = Diary.all
+		   @diaries = Diary.all
+		if params[:tag_name]
+           @diaries = Diary.tagged_with("#{params[:tag_name]}")
+        end
 	end
 
 	def show
 		@diary = Diary.find(params[:id])
+		@comment = Comment.new
+        @comments = @diary.comments
 	end
 
 	def edit
@@ -38,6 +43,6 @@ class DiariesController < ApplicationController
 	private
 
 	def diary_params
-		params.require(:diary).permit(:body, :body_image, :exercise, :sleep, :cigarette, :drinking)
+		params.require(:diary).permit(:body, :body_image, :exercise, :sleep, :cigarette, :drinking, :tag_list)
 	end
 end

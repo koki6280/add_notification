@@ -2,18 +2,26 @@
 	<div class="row">
 		<h2>編集ページ</h2>
 		<%= form_for(@diary) do |f| %>
+		
+		<div class="field">
+        	<%= f.label :tag_list, 'タグ' %>
+        	<%= f.text_field :tag_list, value: @diary.tag_list.join(',') %>
+        </div>
+
         <div class="field">
             <%= f.label :body, '本文' %>
             <%= f.text_field :body, class: "diary_body" %>
         </div>
+
         <div class="field">
         	<%= f.label :image, 'メディア' %>
 		    <%= f.attachment_field :body_image, class: "body_image" %>
         </div>
+
         <div class="field">
         	<%= f.number_field :exercise , placeholder: "運動時間" %>
         </div>
-        
+
         <div class="field">
         	<%= f.number_field :sleep , placeholder: "睡眠時間" %>
         </div>

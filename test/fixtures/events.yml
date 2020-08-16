@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  title: MyString
+  event_body: MyText
+  start_date: 2020-08-12 04:57:45
+  end_date: 2020-08-12 04:57:45
+
+two:
+  user_id: 1
+  title: MyString
+  event_body: MyText
+  start_date: 2020-08-12 04:57:45
+  end_date: 2020-08-12 04:57:45

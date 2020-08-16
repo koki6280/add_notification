@@ -9,12 +9,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="background">
     <header class="navbar navbar-fixed-top navbar-inverse" style="background-color: #90EE90;">
       <div class="container">
 
         <nav class="nav navbar-nav navbar-left">
-          <span class="site_name">QOH</span><span style="color: #fff;">  quality~of~health</span>
+          <span class="site_name">QOH<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></span><span style="color: #fff;">  quality~of~health</span>
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right">
@@ -22,7 +22,7 @@
             <% if user_signed_in? %>
             <li><%= link_to 'Home', user_path(current_user), class: 'glyphicon glyphicon-home home' %></li>
             <li><%= link_to '新規投稿', new_diary_path, class: 'glyphicon glyphicon-user users' %></li>
-            <li><%= link_to 'Books', users_path, class: 'glyphicon glyphicon-book books' %></li>
+            <li><%= link_to '投稿一覧', diaries_path, class: 'glyphicon glyphicon-book books' %></li>
             <li><%= link_to 'logout', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
             <% else %>
             <li><%= link_to 'Home', root_path, class: 'glyphicon glyphicon-home home' %></li>
