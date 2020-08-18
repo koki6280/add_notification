@@ -3,13 +3,21 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@diaries = @user.diaries
 		days = (Date.today.beginning_of_month..Date.today).to_a
-		diaries = days.map { |item| Diary.where(created_at: item.beginning_of_day..item.end_of_day).count }
-		@graph = LazyHighCharts::HighChart.new('graph') do |f|
-           f.title(text: '投稿 月間登録推移')
-           f.xAxis(categories: days)
-           f.series(name: '登録数', data: diaries)
-           end
+        cigarettes = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.cigarette&.to_i}
+        @graph = LazyHighCharts::HighChart.new('graph') do |f|
+        	f.title(text: '喫煙本数')
+        	f.xAxis(categories: days)
+        	f.series(name: '本数', data: cigarettes)
+        end
+        days = (Date.today.beginning_of_month..Date.today).to_a
+        sleeps = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.sleep&.to_i}
+        @graph1 = LazyHighCharts::HighChart.new('graph') do |f|
+        	f.title(text: '喫煙本数')
+        	f.xAxis(categories: days)
+        	f.series(name: '本数', data: sleeps)
+        end
 	end
+
 
 	def edit
 		@user = User.find(params[:id])

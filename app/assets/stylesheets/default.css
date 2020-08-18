@@ -11,3 +11,25 @@
   display: inline-block;
   width: auto;
 }
+
+.index_diary {
+	margin-bottom: 10px;
+}
+
+.index_lists {
+	padding-left: 60px;
+}
+
+.index_img {
+	border-radius: 50px;
+}
+
+.box {
+	padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #90EE90;/*文字色*/
+    background: #FFF;
+    border: solid 3px #90EE90;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}

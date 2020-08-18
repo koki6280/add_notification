@@ -1,14 +1,21 @@
 <div class="container" style="margin-top: 100px;">
 	<div class="row">
-		<table class="table table-bordered">
+		<div class="col-xs-3">
+		<table class="table">
+			<tr><%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
 			<tr>
-				<th><%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></th>
+                <th>ユーザーネーム</th>
 				<th><%= @user.nickname %></th>
+			</tr>
+			<tr>
+			    <th>プロフィール</th>
 				<th><%= @user.profile %></th>
 			</tr>
 		</table>
-		<%= link_to '編集', edit_user_path(@user) %>
-		<%= link_to 'マイカレンダー', my_calendar_path(@user) %>
+		<%= link_to 'プロフィール編集', edit_user_path(@user), class: "col-xs-12 btn btn-default edit_user_#{@user.id}" %>
+		<%= link_to 'マイカレンダー', my_calendar_path(@user), class: "col-xs-12 btn btn-default" %>
+	    </div>
+	    <div class="col-xs-9">
 
 		<table class="table table-bordered">
 			<thead>
@@ -41,6 +48,9 @@
 				<% end %>
 			</tbody>
 		</table>
-		<%= high_chart('sample', @graph) %>
+	    </div>
+	    <div class="col-xs-6">
+		<%= high_chart('sample', @graph) %><br>
+	    </div>
 	</div>
 </div>

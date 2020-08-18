@@ -18,8 +18,8 @@
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <!--if文でサインインとアウト時の表示を変更-->
-            <% if user_signed_in? %>
+            <% if user_signed_in? %><!--if文でサインインとアウト時の表示を変更-->
+            <%= link_to '検索', search_path %>
             <li><%= link_to 'Home', user_path(current_user), class: 'glyphicon glyphicon-home home' %></li>
             <li><%= link_to '新規投稿', new_diary_path, class: 'glyphicon glyphicon-user users' %></li>
             <li><%= link_to '投稿一覧', diaries_path, class: 'glyphicon glyphicon-book books' %></li>
