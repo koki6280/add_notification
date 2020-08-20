@@ -12,7 +12,7 @@ class DiariesController < ApplicationController
 	end
 
 	def index
-		   @diaries = Diary.all
+		   @diaries = Diary.page(params[:page]).reverse_order
 		if params[:tag_name]
            @diaries = Diary.tagged_with("#{params[:tag_name]}")
         end

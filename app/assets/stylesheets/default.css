@@ -25,11 +25,60 @@
 }
 
 .box {
-	padding: 0.5em 1em;
-    margin: 2em 0;
-    font-weight: bold;
-    color: #90EE90;/*文字色*/
-    background: #FFF;
+	margin-bottom: 10px;
     border: solid 3px #90EE90;/*線*/
     border-radius: 10px;/*角の丸み*/
 }
+
+.box2 {
+	margin-bottom: 10px;
+    border: solid 3px #d3d3d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+
+.box_user {
+ 	border: solid 3px #90EE90;
+ 	border-radius: 10px;
+ }
+
+ .show_back {
+ 	background-color: #90EE90;
+ }
+
+ .comment_back {
+ 	background-color: #d3d3d3;
+ }
+
+ .show_tag {
+ 	float: left;
+ }
+
+ .appli_img {
+ 	border-radius: 50%;
+ }
+
+.bt_del {
+	float: right;
+	margin-right: 10px;
+}
+
+.tag_area {
+	font-size: 20px;
+}
+
+.background {
+
+}
+
+.show_icon {
+	font-size: 20px;
+	margin-right: 30px;
+	padding: 10px 0px 10px 20px;
+}
+
+.icon_area {
+	padding: 10px 0px 10px 20px;
+}
+
+
+

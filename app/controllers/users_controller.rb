@@ -2,20 +2,27 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@diaries = @user.diaries
+		
 		days = (Date.today.beginning_of_month..Date.today).to_a
         cigarettes = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.cigarette&.to_i}
+        sleeps = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.sleep&.to_i}
         @graph = LazyHighCharts::HighChart.new('graph') do |f|
         	f.title(text: '喫煙本数')
         	f.xAxis(categories: days)
         	f.series(name: '本数', data: cigarettes)
+        	f.chart(type: "column")
+
+		        @graph2 = LazyHighCharts::HighChart.new('graph') do |t|
+		        	t.title(text: '睡眠時間')
+		        	t.xAxis(categories: days)
+		        	t.series(name: '時間', data: sleeps)
+		        	t.chart(type: "column")
+		        end
         end
-        days = (Date.today.beginning_of_month..Date.today).to_a
-        sleeps = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.sleep&.to_i}
-        @graph1 = LazyHighCharts::HighChart.new('graph') do |f|
-        	f.title(text: '喫煙本数')
-        	f.xAxis(categories: days)
-        	f.series(name: '本数', data: sleeps)
-        end
+	end
+
+	def index
+		@users = User.all
 	end
 
 

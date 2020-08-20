@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-xs-3">
 		<table class="table">
-			<tr><%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+			<tr><%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "noimage.png", size: "200x200", class: "appli_img" %></tr>
 			<tr>
                 <th>ユーザーネーム</th>
 				<th><%= @user.nickname %></th>
@@ -17,40 +17,31 @@
 	    </div>
 	    <div class="col-xs-9">
 
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>タグ</th>
-					<th>メディア</th>
-					<th>投稿内容</th>
-					<th>運動時間</th>
-					<th>睡眠時間</th>
-					<th>喫煙本数</th>
-					<th>飲酒量</th>
-					<th></th>
-				</tr>
-			</thead>
-
-			<tbody>
+		   <h2><%= @user.nickname %>の記録</h2>
 				<% @diaries.each do |diary| %>
-				<tr>
-					<td><%= render 'diaries/tag_list', tag_list: diary.tag_list %></td>
-					<td><%= attachment_image_tag(diary, :body_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
-					<td><%= diary.body %></td>
-					<td><%= diary.exercise %>時間</td>
-					<td><%= diary.sleep %>時間</td>
-					<td><%= diary.cigarette %>本</td>
-					<td><%= diary.drinking %></td>
-					<td><%= link_to "編集する", edit_diary_path(diary), method: :get, class: "btn btn-primary"%>
-						<%= link_to "削除", diary_path(diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
-					</td>
-				</tr>
+				<div class="col-xs-4">
+					<div class="box">
+						<div class="index_lists">
+							<p><%= diary.user.nickname %>の投稿</p><br>
+							<p><%= link_to diary_path(diary) do %>
+							    <%= attachment_image_tag diary, :body_image, :fill, 150, 150, fallback: "no_image.jpg", class: "appli_img2" %>
+							   <% end %></p><br>
+							   <%= link_to diary_path(diary) do %>
+								   <span style="background-color: #cde4ff;">コメントする</span>
+							   <% end %><br>
+							<p class="tag_area"><%= render 'diaries/tag_list', tag_list: diary.tag_list %></p>
+							<p>投稿日　<%= diary.created_at.strftime('%Y/%m/%d') %></p>
+				        </div>
+				    </div>
+				</div>
 				<% end %>
-			</tbody>
-		</table>
 	    </div>
 	    <div class="col-xs-6">
-		<%= high_chart('sample', @graph) %><br>
+	    	<div class="box">
+		<%= high_chart('sample', @graph) %>
+		<%= high_chart('sample', @graph2) %>
+	        </div>
+	    </div>
 	    </div>
 	</div>
 </div>

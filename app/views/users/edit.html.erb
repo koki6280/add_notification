@@ -1,21 +1,25 @@
 <div class="container" style="margin-top: 100px;">
 	<div class="row">
-          <%= form_for(@user) do |f| %>
-       <div class="field">
-		  <%= f.label :image, 'アイコン' %>
-		  <%= f.attachment_field :profile_image, class: "user_image" %>
-       </div>
-       <div class="field">
-       	  <%= f.label :nickname, 'ニックネーム' %>
-       	  <%= f.text_field :nickname, autofocus: true, class: "nickname" %>
-       </div>
-       <div class="field">
-       	  <%= f.label :profile, '自己紹介' %>
-       	  <%= f.text_field :profile, autofocus: true, class: "profile" %>
-       </div>
-       <div class="actions">
-          <%= f.submit '登録' %>
-       </div>
-       <% end %>
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+            <%= form_for(@user) do |f| %>
+         <div class="field">
+      		  <%= f.file_field :profile_image, class: 'img_field', style: 'display:none;' %>
+      		  <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: 'noimage.png', size: '300x300', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev' %>
+         </div>
+         <div class="field">
+         	  <%= f.label :nickname, 'ニックネーム' %><br>
+         	  <%= f.text_field :nickname, autofocus: true, class: "nickname form-control" %>
+         </div>
+         <div class="field" style="margin-bottom: 20px;">
+         	  <%= f.label :profile, '自己紹介' %><br>
+         	  <%= f.text_area :profile, autofocus: true, size: "90x5", class: "profile form-control" %>
+         </div>
+         <div class="actions">
+            <%= f.submit '登録', class: "btn btn-success form-control" %>
+         </div>
+         <% end %>
+     </div>
+     <div class="col-xs-3"></div>
     </div>
 </div>

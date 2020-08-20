@@ -19,7 +19,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-  	unless @event.user == current_user
+  	unless @event.user_id == current_user.id
   		redirect_to root_path
   	end
   end

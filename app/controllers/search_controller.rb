@@ -5,13 +5,13 @@ class SearchController < ApplicationController
 		@content = params["search"]["content"]
 		@datas = search_for(@model, @content)
 	end
-	
+
 	private
 	def search_for(model, content)
 		if model == 'user'
-      		User.where("nickname LIKE ?", "%#{content}%")
-    	elsif model == 'diary'
-      		Diary.where("body LIKE ?", "%#{content}%")
+      		User.where('nickname LIKE ?', '%'+content+'%')
+    	else model == 'diary'
+      		Diary.where('body LIKE ?', '%'+content+'%')
   		end
 	end
 end

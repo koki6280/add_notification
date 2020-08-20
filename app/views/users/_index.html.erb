@@ -1,0 +1,20 @@
+<table class="table table-striped">
+      	<thead>
+         <tr>
+            <th>アイコン</th>
+            <th>ユーザー</th>
+            <th>プロフィール</th>
+            <th></th>
+         </tr>
+       </thead>
+      <tbody>
+          <% users.each do |user| %>
+             <tr>
+                <td><%= attachment_image_tag(user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg") %></td>
+                <td><%= user.nickname%></td>
+                <td><%= user.profile %></td>
+                <td><%= link_to '詳細', user_path(user), method: :get, class: "btn btn-primary" %></td>
+             </tr>
+          <% end %>
+       </tbody>
+</table>

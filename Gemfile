@@ -79,6 +79,7 @@ gem 'lazy_high_charts'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'devise-i18n'
 gem 'rails-i18n'
+gem 'kaminari','~> 1.2.1'
 
 group :production do
   gem 'mysql2'
