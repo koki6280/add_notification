@@ -3,18 +3,21 @@
 	  <div class="col-xs-4">
 	  	<div class="box">
 	  		<p class="show_back"><%= @diary.user.nickname %>の日記</p>
-	  		<p style="padding-left: 30px;"><%= attachment_image_tag(@diary, :body_image, :fill, 300, 300, fallback: "noimage.png", size:'300x300', class: "appli_img") %></p>
+	  		<p style="padding-left: 30px;"><%= attachment_image_tag(@diary, :body_image, :fill, 300, 300, fallback: "diary_no.png", size:'300x300', class: "appli_img3") %></p>
 	  	</div>
 	  </div>
       <div class="col-xs-6">
       	<div class="box">
       		<div class="index_show">
       			<p class="show_back">
+      				<%= link_to user_path(@diary.user) do %>
       			　　<%= attachment_image_tag(@user, :profile_image, :fill, 30, 30, fallback: "noimage.png", size:'50x50', class: "appli_img") %>
       			   <%= @diary.user.nickname %>
-      		　　    <%= render 'diaries/tag_list', tag_list: @diary.tag_list %>
+      			   <% end %>
+      		　　    <span class="tag_area"><%= render 'diaries/tag_list', tag_list: @diary.tag_list %></span>
       	　　　 投稿日<%= @diary.created_at.strftime('%Y/%m/%d') %>
-      			   <%= link_to "削除する", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@diary.id}" %>
+      			   <%= link_to "削除", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-default bt_del destroy_diary_#{@diary.id}" %>
+      			   <%= link_to '編集', edit_diary_path(@diary), class: "btn btn-default bt_del edit_diary_#{@diary.id}" %>
       			   </p>
       			<p><li><%= @diary.body %></li></p>
       			<p class="show_back">
@@ -28,11 +31,23 @@
                            <% end %>
                        <% end %>
                        コメント数：<%= @diary.comments.count %>
-                            <div class="show_back icon_area">
-			                   <span class="show_icon"><%= image_tag 'exercise.png', size:'30x30' %><%= @diary.exercise %>時間</span>
-			                   <span class="show_icon"><%= image_tag 'sleep.png', size:'30x30' %><%= @diary.sleep %>時間</span>
-			                   <span class="show_icon"><%= image_tag 'cigarette.jpg', size:'30x30' %><%= @diary.cigarette %>本</span>
-			                   <span class="show_icon"><%= image_tag 'drinking.png', size:'30x30' %><%= @diary.drinking %></span>
+                            <div class="icon_area">
+			                   <span class="show_icon">
+			                        <%= image_tag 'exercise.png', size:'30x30', class: "icon_tag" %>
+			                        <%= @diary.exercise %>時間
+			                   </span>
+			                   <span class="show_icon">
+			                        <%= image_tag 'sleep.png', size:'30x30', class: "icon_tag" %>
+			                   	    <%= @diary.sleep %>時間
+			                   	</span>
+			                   <span class="show_icon">
+			                   	    <%= image_tag 'cigarette.jpg', size:'30x30', class: "icon_tag" %>
+			                   	    <%= @diary.cigarette %>本
+			                   </span>
+			                   <span class="show_icon">
+			                   	    <%= image_tag 'drinking.png', size:'30x30', class: "icon_tag" %>
+			                   	    <%= @diary.drinking %>缶
+			                   </span>
 			                </div>
                  </p>
       		</div>
@@ -52,7 +67,7 @@
                <% end %>
                <%= comment.user.nickname %>さんからのコメントです!
                <% if current_user == comment.user %>
-               <%= link_to '削除する', diary_comment_path(@diary, comment), class: 'btn-sm btn-danger bt_del', method: :delete %>
+               <%= link_to '削除', diary_comment_path(@diary, comment), class: 'btn btn-default bt_del', method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
            </p>
                <% end %>
                </p>
@@ -62,7 +77,7 @@
 
 	    <%= form_for [@diary, @comment] do |f| %>
 	      <%= f.text_area :comment, size: "90x5" %>
-	      <%= f.submit '送信', class: "btn-sm btn-primary form-control" %>
+	      <%= f.submit '送信', class: "btn btn-info form-control" %>
 	    <% end %>
      </div>
   </div>

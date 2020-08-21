@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   resources :events
+  get 'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
   get 'search' => 'search#search'
   get 'my_calendar', to: 'events#my_calendar'
   root 'homes#top'

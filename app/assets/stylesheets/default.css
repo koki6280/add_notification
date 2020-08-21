@@ -16,13 +16,10 @@
 	margin-bottom: 10px;
 }
 
-.index_lists {
-	padding-left: 60px;
+.index_img {
+	margin-left: 60px;
 }
 
-.index_img {
-	border-radius: 50px;
-}
 
 .box {
 	margin-bottom: 10px;
@@ -32,7 +29,7 @@
 
 .box2 {
 	margin-bottom: 10px;
-    border: solid 3px #d3d3d3;/*線*/
+    border: solid 3px #00ffff;/*線*/
     border-radius: 10px;/*角の丸み*/
 }
 
@@ -46,17 +43,14 @@
  }
 
  .comment_back {
- 	background-color: #d3d3d3;
+ 	background-color: #00ffff;
  }
 
  .show_tag {
  	float: left;
  }
 
- .appli_img {
- 	border-radius: 50%;
- }
-
+ 
 .bt_del {
 	float: right;
 	margin-right: 10px;
@@ -71,7 +65,7 @@
 }
 
 .show_icon {
-	font-size: 20px;
+	font-size: 15px;
 	margin-right: 30px;
 	padding: 10px 0px 10px 20px;
 }
@@ -80,5 +74,65 @@
 	padding: 10px 0px 10px 20px;
 }
 
+.icon_tag {
+	margin-right: 5px;
+}
 
+.img_prev:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transform: scale(1.01, 1.01);
+  border-radius: 50%;
+}
+
+.img_prev_diary:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transform: scale(1.01, 1.01);
+  border-radius: 7%;
+}
+
+.appli_img {
+ 	border-radius: 50%;
+ }
+
+.appli_img2 {
+	border-radius: 50%;
+}
+
+.appli_img2:hover {
+	cursor: pointer;
+    opacity: 0.7;
+    transform: scale(1.01, 1.01);
+}
+
+.appli_img3 {
+	border-radius: 7%;
+}
+
+.appli_img3:hover {
+	cursor: pointer;
+    opacity: 0.7;
+    transform: scale(1.01, 1.01);
+}
+
+.font_img {
+	text-align: center;
+	font-family: arial unicode ms;
+	padding: 0.5em;
+    background: aliceblue;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.23);
+}
+
+.diary_point {
+	margin-left: 60px;
+	background-color: #cde4ff;
+	font-size: 15px;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
 

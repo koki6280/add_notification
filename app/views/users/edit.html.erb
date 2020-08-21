@@ -2,13 +2,14 @@
 	<div class="row">
     <div class="col-xs-3"></div>
     <div class="col-xs-6">
+        <h2 class="font_img">プロフィール編集</h2>
             <%= form_for(@user) do |f| %>
          <div class="field">
       		  <%= f.file_field :profile_image, class: 'img_field', style: 'display:none;' %>
       		  <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: 'noimage.png', size: '300x300', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev' %>
          </div>
          <div class="field">
-         	  <%= f.label :nickname, 'ニックネーム' %><br>
+         	  <%= f.label :nickname, 'ネーム' %><br>
          	  <%= f.text_field :nickname, autofocus: true, class: "nickname form-control" %>
          </div>
          <div class="field" style="margin-bottom: 20px;">

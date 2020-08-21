@@ -1,42 +1,44 @@
 <div class="container" style="margin-top: 100px;">
-	<div class="row">
-		<h2>編集ページ</h2>
-		<%= form_for(@diary) do |f| %>
-		
-		<div class="field">
-        	<%= f.label :tag_list, 'タグ' %>
-        	<%= f.text_field :tag_list, value: @diary.tag_list.join(',') %>
-        </div>
+    <div class="row">
+        <h2 class="font_img">編集画面</h2>
+        <div class="col-xs-7">
+                <%= form_for(@diary) do |f| %>
+            <div class="field">
+                <%= f.label :tag_list, 'タグ  (タグはカンマ区切りで複数入力できます)' %><br>
+                <%= f.text_field :tag_list, size: "90", value: @diary.tag_list.join(',') %>
+            </div>
 
-        <div class="field">
-            <%= f.label :body, '本文' %>
-            <%= f.text_field :body, class: "diary_body" %>
-        </div>
+            <div class="field">
+                <%= f.label :body, '本文' %><br>
+                <%= f.text_area :body, size: "90x10", class: "diary_body" %>
+            </div>
+            <h4>本日の実績を入力してください！　※飲酒量は350ml缶で1とします</h4>
+            <div class="field" style="margin-bottom: 5px;">
+                <%= f.number_field :exercise , placeholder: "運動時間", class: "form-control" %>
+            </div>
 
-        <div class="field">
-        	<%= f.label :image, 'メディア' %>
-		    <%= f.attachment_field :body_image, class: "body_image" %>
-        </div>
+            <div class="field" style="margin-bottom: 5px;">
+                <%= f.number_field :sleep , placeholder: "睡眠時間", class: "form-control" %>
+            </div>
 
-        <div class="field">
-        	<%= f.number_field :exercise , placeholder: "運動時間" %>
-        </div>
+            <div class="field" style="margin-bottom: 5px;">
+                <%= f.number_field :cigarette , placeholder: "喫煙本数", class: "form-control" %>
+            </div>
 
-        <div class="field">
-        	<%= f.number_field :sleep , placeholder: "睡眠時間" %>
+            <div class="field">
+                <%= f.number_field :drinking , placeholder: "飲酒量", class: "form-control" %>
+            </div>
         </div>
+        <div class="col-xs-4">
+            <div class="field">
+                <%= f.file_field :body_image, class: 'img_field', style: 'display:none;' %>
+                <%= attachment_image_tag @diary, :body_image, :fill, 200, 200, fallback: 'diary_no.png', size:'300x300', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev_diary' %>
+            </div>
 
-        <div class="field">
-        	<%= f.number_field :cigarette , placeholder: "喫煙本数" %>
+            <div class="field" style="margin-top: 15px;">
+                <%= f.submit '投稿', class: "btn btn-success form-control"  %>
+            </div>
+                <% end %>
         </div>
-
-        <div class="field">
-        	<%= f.number_field :drinking , placeholder: "飲酒量" %>
-        </div>
-
-        <div class="field">
-        	<%= f.submit '投稿' %>
-        </div>
-        <% end %>
-	</div>
+    </div>
 </div>

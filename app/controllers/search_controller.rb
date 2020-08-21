@@ -3,7 +3,7 @@ class SearchController < ApplicationController
 	def search
 		@model = params["search"]["model"]
 		@content = params["search"]["content"]
-		@datas = search_for(@model, @content)
+		@datas = search_for(@model, @content).page(params[:page]).reverse_order
 	end
 
 	private

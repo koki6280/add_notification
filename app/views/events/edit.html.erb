@@ -1,6 +1,8 @@
+<div class="container" style="margin-top: 100px;">
 <div class="row">
 	<div class="col-xs-3"></div>
 	<div class="col-xs-6">
+		<h3 class="font_img">スケジュール編集</h3>
 		<%= form_with model: @event, url: event_path(@event), local: true do |f| %>
 
 		<%= f.label :title, 'スケジュール名' %>
@@ -19,4 +21,5 @@
 		<% end %>
 	</div>
 	<div class="col-xs-3"></div>
+</div>
 </div>

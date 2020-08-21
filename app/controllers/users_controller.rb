@@ -1,28 +1,51 @@
 class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
-		@diaries = @user.diaries
-		
+		@diaries = @user.diaries.page(params[:page]).reverse_order
+
+
 		days = (Date.today.beginning_of_month..Date.today).to_a
-        cigarettes = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.cigarette&.to_i}
-        sleeps = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.sleep&.to_i}
+		days2 = (Date.today.beginning_of_week..Date.today).to_a
+        exercises = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.exercise&.to_i}
+        exercises_w = days2.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.exercise&.to_i}
         @graph = LazyHighCharts::HighChart.new('graph') do |f|
+        	   f.title(text: '運動時間')
+        	   f.xAxis(categories: days)
+        	   f.series(name: '時間', data: exercises)
+        	   f.chart(type: "column")
+        end
+        sleeps = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.sleep&.to_i}
+        @graph2 = LazyHighCharts::HighChart.new('graph') do |f|
+		     f.title(text: '睡眠時間')
+		     f.xAxis(categories: days)
+		     f.series(name: '時間', data: sleeps)
+		     f.chart(type: "column")
+		end
+
+		cigarettes = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.cigarette&.to_i}
+        @graph3 = LazyHighCharts::HighChart.new('graph') do |f|
         	f.title(text: '喫煙本数')
         	f.xAxis(categories: days)
-        	f.series(name: '本数', data: cigarettes)
+        	f.series(name: '本', data: cigarettes)
         	f.chart(type: "column")
-
-		        @graph2 = LazyHighCharts::HighChart.new('graph') do |t|
-		        	t.title(text: '睡眠時間')
-		        	t.xAxis(categories: days)
-		        	t.series(name: '時間', data: sleeps)
-		        	t.chart(type: "column")
-		        end
         end
+
+        drinkings = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.drinking&.to_i}
+        @graph4 = LazyHighCharts::HighChart.new('graph') do |f|
+		     f.title(text: '飲酒量')
+		     f.xAxis(categories: days)
+		     f.series(name: '缶', data: drinkings)
+		     f.chart(type: "column")
+		end
 	end
 
 	def index
 		@users = User.all
+	end
+
+	def favorites
+		@user = User.find(params[:id])
+		@diaries = @user.favorite_diaries.page(params[:page]).reverse_order
 	end
 
 
