@@ -1,12 +1,12 @@
 <div class="container" style="margin-top: 100px;">
 	<div class="row">
-  	  <div class="col-md-5 col-xs-12">
+  	  <div class="col-md-5 col-sm-6 col-xs-12">
     	  	<div class="box">
     	  		<p class="show_back"><%= @diary.user.nickname %>の日記</p>
     	  		<p style="padding-left: 30px;"><%= attachment_image_tag(@diary, :body_image, :fill, 300, 300, fallback: "diary_no.png", size:'300x300', class: "appli_img3") %></p>
     	  	</div>
   	  </div>
-      <div class="col-md-7 col-xs-12">
+      <div class="col-md-7 col-sm-6 col-xs-12">
       	<div class="box">
       		<div class="index_show">
       			<p class="show_back">
@@ -55,7 +55,7 @@
       </div>
   </div>
   <div class="row">
-      <div class="col-md-7 col-xs-12">
+      <div class="col-md-7 col-sm-7 col-xs-12">
       		  <h2>コメント一覧</h2>
           		<% if @diary.comments.count == 0 %>
           		   <p>この記事にはまだコメントはありません。コメントしてみましょう！</p>

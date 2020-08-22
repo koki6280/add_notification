@@ -23,11 +23,10 @@ body {
   background: #444444;
 }
 #header {
-  background: url(https://pixabay.com/get/55e5dd4b4c53a414f6d1867dda35367b1c37dee451587641_1920.jpg) no-repeat center top;
+  background: url(about1.png) no-repeat center top;
   background-size: cover;
   position: fixed;
-  height: 90%;
-  bottom: 10%;
+  height: 100%;
   right: 0;
   left: 0;
   top: 0;

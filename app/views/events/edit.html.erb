@@ -1,25 +1,10 @@
 <div class="container" style="margin-top: 100px;">
 <div class="row">
-	<div class="col-xs-3"></div>
-	<div class="col-xs-6">
-		<h3 class="font_img">スケジュール編集</h3>
-		<%= form_with model: @event, url: event_path(@event), local: true do |f| %>
-
-		<%= f.label :title, 'スケジュール名' %>
-		<%= f.text_field :title, class: 'form-control' %>
-
-		<%= f.label :event_body, 'スケジュール内容' %>
-		<%= f.text_area :event_body, class: 'form-control' %>
-
-		<%= f.label :start_date, '開始日時' %>
-		<%= f.datetime_select :start_date, {}, class: 'form-control datetime-form' %>
-
-		<%= f.label :end_date, '終了日時' %>
-		<%= f.datetime_select :end_date, {}, class: 'form-control datetime-form' %>
-
-		<%= f.submit '保存', class: 'btn btn-primary btn-block' %>
-		<% end %>
-	</div>
-	<div class="col-xs-3"></div>
+	<div class="col-md-3 col-xs-12"></div>
+		<div class="col-md-6 col-xs-12">
+			<h3 class="font_img">スケジュール編集</h3>
+			<%= render 'events/new-event', event: @event %>
+		</div>
+	<div class="col-md-3 col-xs-12"></div>
 </div>
 </div>

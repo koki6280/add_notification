@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :comments
   has_many :favorites, dependent: :destroy
   has_many :favorite_diaries, through: :favorites, source: 'diary'
+  validates :nickname, length: { maximum: 20 }, uniqueness: true
 end
