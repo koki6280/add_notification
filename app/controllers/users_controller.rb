@@ -2,18 +2,21 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@diaries = @user.diaries.page(params[:page]).reverse_order
+		@model = params["model"]
 
 
 		days = (Date.today.beginning_of_month..Date.today).to_a
 		days2 = (Date.today.beginning_of_week..Date.today).to_a
         exercises = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.exercise&.to_i}
         exercises_w = days2.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.exercise&.to_i}
+
         @graph = LazyHighCharts::HighChart.new('graph') do |f|
         	   f.title(text: '運動時間')
         	   f.xAxis(categories: days)
         	   f.series(name: '時間', data: exercises)
         	   f.chart(type: "column")
         end
+
         sleeps = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.sleep&.to_i}
         @graph2 = LazyHighCharts::HighChart.new('graph') do |f|
 		     f.title(text: '睡眠時間')

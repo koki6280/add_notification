@@ -1,46 +1,47 @@
-
 <div class="container">
-  <div class="row">
-    <div class="devise_post">
-    <h2>新規登録</h2>
+    <div class="row">
+          <div class="col-md-3 col-xs-12"></div>
+            <div class="col-md-6 col-xs-12" style="margin-top: 100px;">
+                <h2>新規登録</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.label :nickname, 'ニックネーム' %><br />
-        <%= f.text_field :nickname, autofocus: true, class: 'form-control' %>
+                  <div class="field">
+                    <%= f.label :nickname, 'ニックネーム' %><br />
+                    <%= f.text_field :nickname, autofocus: true, class: 'form-control' %>
+                  </div>
+
+
+                  <div class="field">
+                    <%= f.label :email, 'メールアドレス' %><br />
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+                  </div>
+
+                  <div class="field">
+                    <%= f.label :password, 'パスワード' %>
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+                  </div>
+
+                  <div class="field">
+                    <%= f.label :password_confirmation, 'パスワード(確認用)' %><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+                  </div>
+
+                  <div class="field" style="padding-left: 130px;">
+                   <%= recaptcha_tags %>
+                  </div>
+
+                  <div class="actions">
+                    <%= f.submit "新規登録", class: 'form-control' %>
+                  </div>
+                <% end %>
+
+                会員の方は<%= render "devise/shared/links" %>からログインしてください。
+            </div>
+          <div class="col-md-3 col-xs-12"></div>
       </div>
-
-
-      <div class="field">
-        <%= f.label :email, 'メールアドレス' %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password, 'パスワード' %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation, 'パスワード(確認用)' %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-      </div>
-
-      <div class="field">
-       <%= recaptcha_tags %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "新規登録", class: 'form-control' %>
-      </div>
-    <% end %>
-
-    <%= render "devise/shared/links" %>
-  </div>
-  </div>
 </div>

@@ -1,0 +1,13 @@
+@media screen and (max-width:425px) {
+	.col-xs-3 {
+		width: 100%;
+	}
+
+	.col-xs-6 {
+		width: 100%
+	}
+
+	.col-xs-9 {
+		width: 100%;
+	}
+}
