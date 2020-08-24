@@ -86,8 +86,7 @@ $hrSize: 5px;
     display: block;
     left: 50%;
     top: 50%;
-    @include transform(rotate(45deg));
-    
+
     > i {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       line-height: $hrBoxBorderLength*0.92;
@@ -98,7 +97,6 @@ $hrSize: 5px;
       position: absolute;
       color: $hrColor;
       display: block;
-      @include transform(rotate(-45deg));
     }
   }
 }
