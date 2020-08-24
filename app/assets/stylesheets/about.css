@@ -19,7 +19,7 @@ body {
   background: #444444;
 }
 #header {
-  background: url(about1.png) no-repeat center top;
+  background: image-url("about1.png") no-repeat center top;
   background-size: cover;
   position: fixed;
   height: 100%;
