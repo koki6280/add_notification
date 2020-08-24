@@ -137,7 +137,7 @@ $hrSize: 5px;
 }
 
 .about_img {
-	margin-left: 150px;
+  position: relative;
 	margin-bottom: 10px;
 	border-radius: 8%;
 }
@@ -164,6 +164,7 @@ $hrSize: 5px;
 	margin-left: 100px;
 	animation: moveInLeft 4s ease-out;
 }
+
 
 
 

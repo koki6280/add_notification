@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :events
   get 'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
+  get 'users/:id/graphs' => 'users#graphs', as: 'user_graphs'
   get 'search' => 'search#search'
   get 'my_calendar', to: 'events#my_calendar'
   root 'homes#top'

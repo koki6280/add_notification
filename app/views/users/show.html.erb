@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 100px;">
+<div class="container">
 	<div class="row">
 		<div class="col-md-3 col-sm-3 col-xs-12">
 			<table class="table">
@@ -17,10 +17,12 @@
 						<% end %>
 				</tr>
 			</table>
-				<%= link_to 'プロフィール編集', edit_user_path(@user), class: "col-xs-12 btn btn-default edit_user_#{@user.id}" %>
-				<%= link_to my_calendar_path(@user) do %>
-				<%= image_tag 'calendar.png', size:'150x150' %>
-				<% end %>
+			  <% if @user.id == current_user.id %>
+					<%= link_to 'プロフィール編集', edit_user_path(@user), class: "col-xs-12 btn btn-default edit_user_#{@user.id}" %>
+					<%= link_to my_calendar_path(@user) do %>
+					<%= image_tag 'calendar.png', size:'150x150' %>
+					<% end %>
+			  <% end %>
 	    </div>
 	    <div class="col-md-9 col-sm-9 col-xs-12">
            <h2 class="font_img"><%= @user.nickname %>の記録</h2><%= paginate @diaries %>
@@ -37,7 +39,7 @@
 							   <%= link_to diary_path(diary) do %>
 								   <span class="diary_point">コメントする</span>
 							   <% end %><br>
-							<p class="tag_area" style="padding-left: 60px;"><%= render 'diaries/tag_list', tag_list: diary.tag_list %></p>
+							<p class="tag_area"><%= render 'diaries/tag_list', tag_list: diary.tag_list %></p>
 							<p class="show_back">投稿日　<%= diary.created_at.strftime('%Y/%m/%d') %></p>
 				        </div>
 				    </div>
@@ -66,6 +68,11 @@
 			       <%= high_chart('my_chart4', @graph4) %>
 			   </div>
 			</div>
+			<div class="col-md-3 col-sm-3 col-xs-12"></div>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<%= link_to 'さらに詳しく見る', user_graphs_path, class: 'btn btn-success btn-block' %>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-12"></div>
 		</div>
 
 </div>

@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+	    <h1 class="font_img"><%= @user.nickname %>の実績</h1>
+	</div>
+	<div class="col-md-12 col-sm-12 col-xs-12">
+    	<div class="box">
+	       <%= high_chart('my_chart_m', @graph_m) %>
+	       <%= high_chart('my_chart_y', @graph_y) %>
+	   </div>
+	   <div class="box">
+	       <%= high_chart('my_chart2_m', @graph2_m) %>
+	       <%= high_chart('my_chart2_y', @graph2_y) %>
+	   </div>
+	   <div class="box">
+	       <%= high_chart('my_chart3_m', @graph3_m) %>
+	       <%= high_chart('my_chart3_y', @graph3_y) %>
+	   </div>
+	   <div class="box">
+	       <%= high_chart('my_chart4_m', @graph4_m) %>
+	       <%= high_chart('my_chart4_y', @graph4_y) %>
+	   </div>
+	</div>
+</div>

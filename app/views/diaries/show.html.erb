@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 100px;">
+<div class="container">
 	<div class="row">
   	  <div class="col-md-5 col-sm-6 col-xs-12">
     	  	<div class="box">
@@ -16,8 +16,10 @@
       			    <% end %>
       		　　 <span class="tag_area"><%= render 'diaries/tag_list', tag_list: @diary.tag_list %></span>
       	　　　 投稿日<%= @diary.created_at.strftime('%Y/%m/%d') %>
-      			        <%= link_to "削除", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-default bt_del destroy_diary_#{@diary.id}" %>
-      			        <%= link_to '編集', edit_diary_path(@diary), class: "btn btn-default bt_del edit_diary_#{@diary.id}" %>
+        			        <% if @diary.user == current_user %>
+                        <%= link_to "削除", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-default bt_del destroy_diary_#{@diary.id}" %>
+          			        <%= link_to '編集', edit_diary_path(@diary), class: "btn btn-default bt_del edit_diary_#{@diary.id}" %>
+                      <% end %>
       			</p>
       			<p><li><%= @diary.body %></li></p>
       			<p class="show_back">
