@@ -8,10 +8,6 @@
 	color: #90EE90;
 }
 
-@import "compass/css3";
-
-@import url(https://fonts.googleapis.com/css?family=Varela+Round);
-@import url(https://fonts.googleapis.com/css?family=Lusitana);
 
 html, body {
   height: 100%;
