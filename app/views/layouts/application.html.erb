@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => "reload" %>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
   </head>
 
@@ -15,7 +15,7 @@
       <div>
         <%= link_to home_about_path do %>
         <nav class="nav navbar-nav navbar-left">
-          <span class="site_name">QOH<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></span><span style="color: #fff;">  quality~of~health</span>
+          <span class="site_name">QOH<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></span><span class="site_name_min">  quality~of~health</span>
         </nav>
         <% end %>
         <nav>

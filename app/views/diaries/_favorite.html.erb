@@ -1,0 +1,9 @@
+<% if diary.favorited_by?(current_user) %>
+   <%= link_to diary_favorites_path(diary), method: :delete  do %>
+       <span class="glyphicon glyphicon-heart" style="color: red;"><%= diary.favorites.count%></span>
+   <% end %>
+<% else %>
+   <%= link_to diary_favorites_path(diary), method: :post  do %>
+       <span class="glyphicon glyphicon-heart-empty"><%= diary.favorites.count %></span>
+   <% end %>
+<% end %>

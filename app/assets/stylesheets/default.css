@@ -5,6 +5,11 @@
 .site_name {
 	color: #fff;
 	font-size: 40px;
+	margin-left: 30px;
+}
+
+.site_name_min {
+	color: #fff;
 }
 
 .devise_post {

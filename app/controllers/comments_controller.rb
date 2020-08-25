@@ -12,8 +12,8 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		   @diary = Diary.find(params[:diary_id])
-	       @comment = Comment.find(params[:id])
+	       @comment = Comment.find(params[:diary_id])
+	       @diary = @comment.diary
 	    if @comment.user == current_user
 	       @comment.destroy
 	    end
