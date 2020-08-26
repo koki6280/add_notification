@@ -21,7 +21,7 @@
                   <div class="field">
                     <%= f.label :password, 'パスワード' %>
                     <% if @minimum_password_length %>
-                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <em>(<%= @minimum_password_length %>文字以上)</em>
                     <% end %><br />
                     <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
                   </div>
@@ -29,18 +29,18 @@
                   <div class="field">
                     <%= f.label :password_confirmation, 'パスワード(確認用)' %><br />
                     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-                  </div>
+                  </div><br>
 
                   <div class="field" style="padding-left: 130px;">
                    <%= recaptcha_tags %>
-                  </div>
+                  </div><br>
 
                   <div class="actions">
                     <%= f.submit "新規登録", class: 'form-control' %>
-                  </div>
+                  </div><br>
                 <% end %>
 
-                会員の方は<%= render "devise/shared/links" %>からログインしてください。
+                <%= link_to 'アカウントをお持ちの方', new_user_session_path, class: 'btn btn-success form-control' %>
             </div>
           <div class="col-md-3 col-xs-12"></div>
       </div>

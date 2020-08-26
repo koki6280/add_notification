@@ -11,6 +11,7 @@
   </head>
 
   <body class="background">
+   <div id="wrapper">
     <header class="navbar navbar-fixed-top navbar-inverse" style="background-color: #90EE90;">
       <div>
         <%= link_to home_about_path do %>
@@ -41,6 +42,9 @@
       </div>
     </header>
     <%= yield %>
-    <%= render 'layouts/footer' %>
+    <footer>
+      <p class="footer_text">©︎All rights reserved by QOH.</p>
+    </footer>
+   </div>
   </body>
 </html>

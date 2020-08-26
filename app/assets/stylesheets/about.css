@@ -1,3 +1,15 @@
+@media screen and (max-width: 765px) {
+  .about_img {
+    width: auto;
+    height: 200px;
+  }
+  .about_img2 {
+    width: auto;
+    height: 200px;
+  }
+
+}
+
 .about_main {
 	font-size: 45px;
 	color: #90EE90;

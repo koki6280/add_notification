@@ -11,7 +11,7 @@
       		<div class="index_show">
       			<p class="show_back">
       				  <%= link_to user_path(@diary.user) do %>
-      			　　  <%= attachment_image_tag(@user, :profile_image, :fill, 30, 30, fallback: "noimage.png", size:'50x50', class: "appli_img") %>
+      			　　  <%= attachment_image_tag(@diary.user, :profile_image, :fill, 30, 30, fallback: "noimage.png", size:'50x50', class: "appli_img") %>
       			     <%= @diary.user.nickname %>
       			    <% end %>
       		　　 <span class="tag_area"><%= render 'diaries/tag_list', tag_list: @diary.tag_list %></span>
@@ -23,8 +23,10 @@
       			</p>
       			<p><li><%= @diary.body %></li></p>
       			<p class="show_back">
-      				        <%= render 'diaries/favorite', diary: @diary %>
-                       コメント数：<%= @diary.comments.count %>
+      				        <span class="diary_<%= @diary.id %>">
+                        <%= render 'diaries/favorite', diary: @diary %>
+                      </span>
+                      <span>コメント数：<%= @diary.comments.count %></span>
                   <div class="icon_area">
 			                   <span class="show_icon">
 			                        <%= image_tag 'exercise.png', size:'30x30', class: "icon_tag" %>
@@ -54,12 +56,12 @@
           		<% if @diary.comments.count == 0 %>
           		   <p>この記事にはまだコメントはありません。コメントしてみましょう！</p>
           		<% end %>
-      		<div class="box2">
+      		<div class="box2" id="comments_area">
               <%= render 'diaries/comment-area', comments: @diary.comments %>
           </div>
 
-    	    <%= form_for [@diary, @comment] do |f| %>
-    	      <%= f.text_area :comment, size: "90x5", class: 'form-control book-body' %>
+    	    <%= form_with model:[@diary, @comment], data: {remote: true} do |f| %>
+    	      <%= f.text_area :comment, size: "90x5", class: 'form-control diary-body' %>
     	      <%= f.submit '送信', class: "btn btn-info form-control" %>
     	    <% end %>
       </div>

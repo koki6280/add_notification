@@ -25,10 +25,10 @@
 
                       <div class="actions">
                           <%= f.submit "ログイン", class: 'form-control' %>
-                      </div>
+                      </div><br>
               <% end %>
 
-                    登録がお済みでないかたは<%= link_to 'こちら', new_user_registration_path %>からご登録してください。
+                    <%= link_to 'アカウントをお持ちでない方', new_user_registration_path, class: 'btn btn-primary form-control' %>
           </div>
       <div class="col-md-3 col-xs-12"></div>
     </div>
