@@ -20,3 +20,16 @@
 #header {
 	background: image-url("about1.png") no-repeat center top;
 }
+
+.about_main {
+	font-size: 70px;
+	color: #fff;
+	animation: moveInLeft 4s ease-out;
+}
+
+.about_main2 {
+	font-size: 35px;
+	color: #fff;
+	margin-left: 100px;
+	animation: moveInLeft 4s ease-out;
+}
