@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
         <h2 class="font_img">新規投稿ページ</h2>
+        <%= render 'diaries/error-message', model: @diary %>
         <%= render 'diaries/new-diary', diary: @diary %>
     </div>
 </div>

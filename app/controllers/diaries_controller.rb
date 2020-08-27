@@ -7,8 +7,12 @@ class DiariesController < ApplicationController
 	def create
 		@diary = Diary.new(diary_params)
 		@diary.user_id = current_user.id
-		@diary.save
-		redirect_to user_path(current_user)
+		if @diary.save
+		   redirect_to user_path(current_user)
+
+		else
+			render 'new'
+		end
 	end
 
 	def index
@@ -30,8 +34,13 @@ class DiariesController < ApplicationController
 
 	def update
 		@diary = Diary.find(params[:id])
-		@diary.update(diary_params)
-		redirect_to user_path(current_user)
+		
+		if @diary.update(diary_params)
+		   redirect_to user_path(current_user)
+
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy

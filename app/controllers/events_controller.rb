@@ -25,7 +25,10 @@ class EventsController < ApplicationController
   end
 
   def update
-  	@event.update(event_params) ? (redirect_to event_path(@event)) : (render 'edit')
+    @event = Event.find(params[:id])
+    @event.user_id = current_user.id
+    @event.update(event_params)
+    redirect_to my_calendar_path
   end
 
   def destroy

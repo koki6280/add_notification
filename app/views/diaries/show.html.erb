@@ -17,8 +17,8 @@
       		　　 <span class="tag_area"><%= render 'diaries/tag_list', tag_list: @diary.tag_list %></span>
       	　　　 投稿日<%= @diary.created_at.strftime('%Y/%m/%d') %>
         			        <% if @diary.user == current_user %>
-                        <%= link_to "削除", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-default bt_del destroy_diary_#{@diary.id}" %>
-          			        <%= link_to '編集', edit_diary_path(@diary), class: "btn btn-default bt_del edit_diary_#{@diary.id}" %>
+                        <%= link_to "", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-default glyphicon glyphicon-trash bt_del destroy_diary_#{@diary.id}" %>
+          			        <%= link_to '', edit_diary_path(@diary), class: "btn btn-default glyphicon glyphicon-wrench bt_del edit_diary_#{@diary.id}" %>
                       <% end %>
       			</p>
       			<p><li><%= @diary.body %></li></p>
@@ -56,18 +56,14 @@
           		<% if @diary.comments.count == 0 %>
           		   <p>この記事にはまだコメントはありません。コメントしてみましょう！</p>
           		<% end %>
-      		<div class="box2" id="comments_area">
+      		<div class="box2">
               <%= render 'diaries/comment-area', comments: @diary.comments %>
           </div>
 
-    	    <%= form_with model:[@diary, @comment], data: {remote: true} do |f| %>
+    	    <%= form_for [@diary, @comment] do |f| %>
     	      <%= f.text_area :comment, size: "90x5", class: 'form-control diary-body' %>
     	      <%= f.submit '送信', class: "btn btn-info form-control" %>
     	    <% end %>
       </div>
   </div>
 </div>
-
-
-
-
