@@ -20,7 +20,7 @@
 			  <% if @user.id == current_user.id %>
 					<%= link_to 'プロフィール編集', edit_user_path(@user), class: "col-xs-12 btn btn-default edit_user_#{@user.id}" %>
 					<%= link_to my_calendar_path(@user) do %>
-					<%= image_tag 'calendar.png', size:'150x150' %>
+					  <%= image_tag 'calendar.png', size:'150x150' %>
 					<% end %>
 			  <% end %>
 	    </div>

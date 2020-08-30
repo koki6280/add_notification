@@ -26,11 +26,10 @@
     	<%= f.number_field :drinking , placeholder: "飲酒量", class: "form-control" %>
     </div>
 </div>
+
 <div class="col-md-4 col-sm-4 col-xs-12">
-    <div class="field">
         <%= f.file_field :body_image, class: 'img_field', style: 'display:none;' %>
-        <%= attachment_image_tag @diary, :body_image, :fill, 200, 200, fallback: 'diary_no.png', size:'300x300', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev' %>
-    </div>
+        <%= attachment_image_tag diary, :body_image, :fill, 200, 200, fallback: 'diary_no.png', size:'300x300', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev' %>
 
     <div class="field" style="margin-top: 15px;">
     	<%= f.submit '投稿', class: "btn btn-success form-control"  %>
