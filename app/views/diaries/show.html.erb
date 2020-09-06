@@ -28,7 +28,7 @@
       				        <span class="diary_<%= @diary.id %>">
                         <%= render 'diaries/favorite', diary: @diary %>
                       </span>
-                      <span>コメント数：<%= @diary.comments.count %></span>
+                      <span class="sentiment-score">コメント数：<%= @diary.comments.count %></span>
                   <div class="icon_area">
 			                   <span class="show_icon">
 			                        <%= image_tag 'exercise.png', size:'30x30', class: "icon_tag" %>
@@ -47,6 +47,13 @@
 			                   	    <%= @diary.drinking %>缶
 			                   </span>
 			            </div>
+            </p>
+            <p class="sentiment-score">
+              <% if @diary.score == nil %>
+                この日記にはスコアがありません
+              <% else %>
+                日記の感情分析スコア<%= @diary.score %>点
+              <% end %>
             </p>
       		</div>
       	</div>
