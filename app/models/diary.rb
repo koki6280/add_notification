@@ -3,6 +3,7 @@ class Diary < ApplicationRecord
 	belongs_to :user
 	has_many :comments, dependent: :destroy
 	has_many :favorites, dependent: :destroy
+	has_many :notifications, dependent: :destroy
 	attachment :body_image, destroy: false
 	validates :body, presence: true, length: { maximum: 200 }
 	validates :exercise, presence: true

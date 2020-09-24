@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
+  resources :notifications, only: :index
+  
   resources :events
 
   get 'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
