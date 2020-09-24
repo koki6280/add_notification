@@ -16,8 +16,25 @@
 					<th><%= @user.favorites.count %></th>
 						<% end %>
 				</tr>
+				<tr>
+					<th><%= link_to user_follows_path(@user) do %>
+						<%= @user.follower.count %>フォロー
+						<% end%>
+					</th>
+					<th><%= link_to user_followers_path(@user) do %>
+						<%= @user.followed.count %>フォロワー
+						<% end %>
+					</th>
+				</tr>
 			</table>
-			  <% if @user.id == current_user.id %>
+			<% unless @user == current_user  %>
+			  <% if current_user.following?(@user) %>
+			    <%= link_to 'フォロー中', user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+			  <% else %>
+			    <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class: "btn btn-success" %>
+			  <% end %>
+			<% end %>
+			  <% if @user == current_user %>
 					<%= link_to 'プロフィール編集', edit_user_path(@user), class: "col-xs-12 btn btn-default edit_user_#{@user.id}" %>
 					  <div id="calendar"></div>
 					<%= link_to 'カレンダー詳細', my_calendar_path, class: "btn btn-default" %>

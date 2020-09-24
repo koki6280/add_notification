@@ -1,0 +1,10 @@
+<div class="container">
+	<div class="row">
+		<h2 class="font_img">フォロワー</h2>
+		<% if @users.count > 0 %>
+		    <%= render 'users/index', users: @users %>
+		<% else %>
+		    <p>ユーザーはいません</p>
+		<% end %>
+	</div>
+</div>
