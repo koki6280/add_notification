@@ -1,0 +1,24 @@
+<% diaries.each do |diary| %>
+	<div class="col-md-4 col-sm-6 col-xs-12">
+		<div class="box">
+			<div class="index_lists">
+				<p class="show_back" style="padding-left: 60px;"><%= diary.user.nickname %>の日記</p><br>
+				<p><%= link_to diary_path(diary) do %>
+				    <%= attachment_image_tag diary, :body_image, :fill, 150, 150, fallback: "diary_no.png", size: '150x150', class: "appli_img3 index_img" %>
+				   <% end %></p><br>
+				   <%= link_to diary_path(diary) do %>
+					   <span class="diary_point">コメントする</span>
+				   <% end %><br>
+				<p class="tag_area"><%= render 'diaries/tag_list', tag_list: diary.tag_list %></p>
+				<p class="show_back">投稿日　<%= diary.created_at.strftime('%Y/%m/%d') %></p>
+				<p class="sentiment-score">
+					<% if diary.score == nil %>
+	                  この日記にはスコアがありません
+	                <% else %>
+	                  日記の感情分析スコア<%= diary.score %>点
+	                <% end %>
+				</p>
+	        </div>
+	    </div>
+	</div>
+<% end %>

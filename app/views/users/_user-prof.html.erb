@@ -1,0 +1,29 @@
+<table class="table">
+	<tr><%= attachment_image_tag user, :profile_image, :fill, 180, 180, fallback: "noimage.png", size: "200x200", class: "appli_img" %></tr>
+	<tr>
+        <th>ネーム</th>
+		<th><%= user.nickname %></th>
+	</tr>
+	<tr>
+	    <th>プロフィール</th>
+		<th><%= user.profile %></th>
+	</tr>
+	<tr>
+		<th><%= link_to "お気に入りの日記", user_favorites_path(user) %></th>
+		<th></th>
+	</tr>
+	<tr>
+		<th><%= link_to "#{ @user.follower.count}フォロー", user_follows_path(user) %></th>
+		<th><%= link_to "#{ @user.followed.count}フォロワー", user_followers_path(user) %></th>
+	</tr>
+</table>
+<% unless user == current_user  %>
+<span>
+<%= render 'users/follow', user: user %>
+</span>
+<% end %>
+  <% if user == current_user %>
+		<%= link_to 'プロフィール編集', edit_user_path(user), class: "col-xs-12 btn btn-default edit_user_#{user.id}" %>
+		  <div id="calendar"></div>
+		<%= link_to 'カレンダー詳細', my_calendar_path, class: "btn btn-default" %>
+  <% end %>
