@@ -1,0 +1,80 @@
+<div class="container">
+	<div class="row">
+  	  <div class="col-md-5 col-sm-6 col-xs-12">
+    	  	<div class="box">
+    	  		<p class="show_back"><%= @diary.user.nickname %>の日記</p>
+    	  		  <p style="padding-left: 30px;">
+                <%= attachment_image_tag(@diary, :body_image, :fill, 300, 300, fallback: "diary_no.png", size:'300x300', class: "appli_img3") %>
+              </p>
+    	  	</div>
+  	  </div>
+      <div class="col-md-7 col-sm-6 col-xs-12">
+      	<div class="box">
+      		<div class="index_show">
+      			<p class="show_back">
+      				  <%= link_to user_path(@diary.user) do %>
+      			　　  <%= attachment_image_tag(@diary.user, :profile_image, :fill, 30, 30, fallback: "noimage.png", size:'50x50', class: "appli_img") %>
+      			     <%= @diary.user.nickname %>
+      			    <% end %>
+      		　　 <span class="tag_area"><%= render 'diaries/tag_list', tag_list: @diary.tag_list %></span>
+      	　　　 投稿日<%= @diary.created_at.strftime('%Y/%m/%d') %>
+        			        <% if @diary.user == current_user %>
+                        <%= link_to "", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-default glyphicon glyphicon-trash bt_del destroy_diary_#{@diary.id}" %>
+          			        <%= link_to '', edit_diary_path(@diary), class: "btn btn-default glyphicon glyphicon-wrench bt_del edit_diary_#{@diary.id}" %>
+                      <% end %>
+      			</p>
+      			<p><li><%= @diary.body %></li></p>
+      			<p class="show_back">
+      				        <span class="diary_<%= @diary.id %>">
+                        <%= render 'diaries/favorite', diary: @diary %>
+                      </span>
+                      <span class="sentiment-score">コメント数：<%= @diary.comments.count %></span>
+                      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+                  <div class="icon_area">
+			                   <span class="show_icon">
+			                        <%= image_tag 'exercise.png', size:'30x30', class: "icon_tag" %>
+			                        <%= @diary.exercise %>時間
+			                   </span>
+			                   <span class="show_icon">
+			                        <%= image_tag 'sleep.png', size:'30x30', class: "icon_tag" %>
+			                   	    <%= @diary.sleep %>時間
+			                   </span>
+			                   <span class="show_icon">
+			                   	    <%= image_tag 'cigarette.jpg', size:'30x30', class: "icon_tag" %>
+			                   	    <%= @diary.cigarette %>本
+			                   </span>
+			                   <span class="show_icon">
+			                   	    <%= image_tag 'drinking.png', size:'30x30', class: "icon_tag" %>
+			                   	    <%= @diary.drinking %>缶
+			                   </span>
+			            </div>
+            </p>
+            <p class="sentiment-score">
+              <% if @diary.score == nil %>
+                この日記にはスコアがありません
+              <% else %>
+                日記の感情分析スコア<%= @diary.score %>点
+              <% end %>
+            </p>
+      		</div>
+      	</div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-7 col-sm-7 col-xs-12">
+      		  <h2>コメント一覧</h2>
+          		<% if @diary.comments.count == 0 %>
+          		   <p>この記事にはまだコメントはありません。コメントしてみましょう！</p>
+          		<% end %>
+      		<div class="box2">
+              <%= render 'diaries/comment-area', comments: @diary.comments %>
+          </div>
+
+    	    <%= form_for [@diary, @comment] do |f| %>
+    	      <%= f.text_area :comment, size: "90x5", class: 'form-control diary-body' %>
+    	      <%= f.submit '送信', class: "btn btn-info form-control" %>
+    	    <% end %>
+      </div>
+  </div>
+</div>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

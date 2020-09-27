@@ -1,0 +1,9 @@
+<div class="container">
+	<div class="row">
+      <h2 class="font_img"><%= @user.nickname %>のお気に入り一覧</h2>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+			<%= render 'diaries/index', diaries: @diaries %>
+			<%= paginate @diaries %>
+		</div>
+	</div>
+</div>

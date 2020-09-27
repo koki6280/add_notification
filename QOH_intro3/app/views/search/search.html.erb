@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row">
+      <% if @model == 'user' %>
+	      <div class="col-md-10 col-sm-10 col-xs-12">
+	      	<h2 class="font_img">検索結果</h2><%= paginate @datas %>
+	      </div>
+	           <%= render 'users/index', users: @datas %>
+      <% else @model == 'diary' %>
+		    <div class="col-md-12 col-sm-12 col-xs-12">
+				<h2 class="font_img">検索結果</h2><%= paginate @datas %>
+			</div>
+		    <div class="col-md-12 col-sm-12 col-xs-12">
+				<%= render 'diaries/index', diaries: @datas %>
+			</div>
+      <% end %>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+<div class="col-md-10 col-sm-10 col-xs-12">
+  <div class="box">
+    <table class="table table-striped">
+        <thead>
+         <tr>
+            <th>アイコン</th>
+            <th>ユーザー</th>
+            <th>プロフィール</th>
+            <th></th>
+         </tr>
+        </thead>
+      <tbody>
+          <% users.each do |user| %>
+            <tr>
+               <td><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "noimage.png", size: '100x100', class: "appli_img") %></td>
+               <td><%= user.nickname%></td>
+               <td><%= user.profile %></td>
+               <td><%= link_to '詳細', user_path(user), method: :get, class: "btn btn-primary" %></td>
+             </tr>
+          <% end %>
+      </tbody>
+     </table>
+  </div>
+</div>

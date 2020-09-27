@@ -1,0 +1,17 @@
+<%= form_with model: event, local: true  do |f| %>
+
+<%= f.label :title, 'スケジュール名' %><br>
+<%= f.text_field :title, class: 'form-control' %><br>
+
+<%= f.label :event_body, 'スケジュール内容' %><br>
+<%= f.text_area :event_body, class: 'form-control' %><br>
+
+<%= f.label :start_date, '開始日時' %><br>
+<%= f.datetime_select :start_date, {}, class: 'datetime-form' %><br><br>
+
+<%= f.label :end_date, '終了日時' %><br>
+<%= f.datetime_select :end_date, {}, class: 'datetime-form' %><br><br>
+
+<%= f.submit '登録', class: 'btn btn-success btn-block' %>
+
+<% end %>

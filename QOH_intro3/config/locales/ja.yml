@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      diary: 日記
+      user: ユーザー
+    attributes:
+      diary:
+        body: 本文
+        exercise: 運動量
+        sleep: 睡眠時間
+        cigarette: 喫煙本数
+        drinking: 飲酒量
+      user:
+        nickname: ネーム
