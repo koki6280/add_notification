@@ -2,9 +2,14 @@
 	<%= form_tag(search_path, method: :get) do %>
         <%= text_field_tag 'search[content]' %>
         <%= select_tag 'search[model]', options_for_select({ "ユーザー" => "user", "投稿一覧" => "diary"}) %>
-        <%= submit_tag '検索' %></li>
+        <%= submit_tag '検索' %>
     <% end %>
+</li>
+ <% if unchecked_notifications.any? %>
+    <i class="fa fa-circle" style="color: gold;"></i>
+<% end %>
+<li><a href="#"><%= link_to "通知", notifications_path, class: "glyphicon glyphicon-bell" %></a></li>
 <li><a href="#"><%= link_to 'マイページ', user_path(current_user), class: 'glyphicon glyphicon-home home', id: 'introjs-step9' %></a></li>
-<li><a href="#"><%= link_to '新規投稿', new_diary_path, class: 'glyphicon glyphicon-user users', data: {"turbolinks" => false} %></a></li>
+<li><a href="#"><%= link_to '新規投稿', new_diary_path, class: 'glyphicon glyphicon-plus', data: {"turbolinks" => false} %></a></li>
 <li><a href="#"><%= link_to '投稿一覧', diaries_path, class: 'glyphicon glyphicon-book books' %></a></li>
 <li><a href="#"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></a></li>

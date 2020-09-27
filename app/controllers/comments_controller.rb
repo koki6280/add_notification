@@ -4,8 +4,9 @@ class CommentsController < ApplicationController
 		@diary = Diary.find(params[:diary_id])
         @comment = @diary.comments.new(comment_params)
         @comment.user_id = current_user.id
+        @comment_diary = @comment.diary
       if  @comment.save
-        flash[:success] = "Comment was successfully created."
+        @comment_diary.create_notification_comment!(current_user, @comment.id)
         redirect_to request.referer
       end
 

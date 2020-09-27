@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   resources :notifications, only: :index
   
   resources :events
-
+  
+  delete '/notifications/destroy_all' => 'notifications#destroy_all'
   get 'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
   get 'users/:id/graphs' => 'users#graphs', as: 'user_graphs'
   get 'search' => 'search#search'
