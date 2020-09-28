@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'rooms/index'
+  get 'rooms/show'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
@@ -16,7 +18,8 @@ Rails.application.routes.draw do
   end
 
   resources :notifications, only: :index
-  
+  resources :messages, only: [:create, :destroy]
+  resources :rooms, only: [:create, :index, :show]
   resources :events
   
   delete '/notifications/destroy_all' => 'notifications#destroy_all'

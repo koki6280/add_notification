@@ -3,6 +3,23 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@diaries = @user.diaries.page(params[:page]).reverse_order
 
+		@current_entry = Entry.where(user_id: current_user.id)
+		@another_entry = Entry.where(user_id: @user.id)
+		unless @user.id == current_user.id
+			@current_entry.each do |current|
+				@another_entry.each do |another|
+					if current.room_id == another.room_id
+						@is_room = true
+                        @room_id = current.room_id
+					end
+				end
+			end
+			unless @is_room
+				@room = Room.new
+                @entry = Entry.new
+			end
+		end
+
 
 		days = (Date.today.beginning_of_week..Date.today).to_a
         exercises = days.map {|day| @user.diaries.find{|x| x.created_at.to_date == day}&.exercise&.to_i}

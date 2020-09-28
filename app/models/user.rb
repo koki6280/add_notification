@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  has_many :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
   validates :nickname, presence: true, length: { maximum: 20 }, uniqueness: true
 
    def create_notification_follow!(current_user)
