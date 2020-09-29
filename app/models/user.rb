@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image, destroy: false
   has_many :diaries, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_diaries, through: :favorites, source: 'diary'
   has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy
   validates :nickname, presence: true, length: { maximum: 20 }, uniqueness: true
+  validates :profile, length: { maximum: 50 }
 
    def create_notification_follow!(current_user)
     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])

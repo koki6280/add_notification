@@ -1,4 +1,7 @@
 class DiariesController < ApplicationController
+	before_action :authenticate_user!
+    before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
 
 	def new
 		@diary = Diary.new
@@ -55,4 +58,11 @@ class DiariesController < ApplicationController
 	def diary_params
 		params.require(:diary).permit(:body, :body_image, :exercise, :sleep, :cigarette, :drinking, :tag_list)
 	end
+
+	def ensure_correct_user
+    @diary = Diary.find(params[:id])
+	    unless @diary.user == current_user
+	      redirect_to diaries_path
+	    end
+    end
 end
