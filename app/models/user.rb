@@ -19,8 +19,8 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :profile, length: { maximum: 50 }
 
-   def create_notification_follow!(current_user)
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
@@ -28,7 +28,7 @@ class User < ApplicationRecord
       )
       notification.save if notification.valid?
     end
-  end
+ end
 
   def follow(user_id)
     follower.create(followed_id: user_id)

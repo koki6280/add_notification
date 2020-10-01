@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'rooms/show'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
-    :sessions => 'users/sessions'
+    :sessions => 'users/sessions',
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users do
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:create, :destroy]
   resources :rooms, only: [:create, :index, :show]
   resources :events
-  
+
   delete '/notifications/destroy_all' => 'notifications#destroy_all'
   get 'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
   get 'users/:id/graphs' => 'users#graphs', as: 'user_graphs'

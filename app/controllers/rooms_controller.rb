@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     room = Room.create
     # Entryモデルにログインユーザーのレコードを作成
@@ -9,9 +9,9 @@ class RoomsController < ApplicationController
     another_entry = Entry.create(user_id: params[:entry][:user_id], room_id: room.id)
     redirect_to room_path(room)
   end
-  
+
   def index
-  	current_entries = current_user.entries
+    current_entries = current_user.entries
     my_room_ids = []
     current_entries.each do |entry|
       my_room_ids << entry.room.id
@@ -21,7 +21,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-  	@room = Room.find(params[:id])
+    @room = Room.find(params[:id])
     @message = Message.new
     # メッセージ相手を抽出
     @another_entry = @room.entries.find_by('user_id != ?', current_user.id)
