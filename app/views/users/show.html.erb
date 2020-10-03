@@ -15,11 +15,13 @@
 			  <% end %>
 			<% end %>
 	    </div>
-	    <div class="col-md-9 col-sm-9 col-xs-12">
+	    <div class="col-md-6 col-sm-6 col-xs-12">
            <h2 class="font_img"><%= @user.nickname %>の記録</h2><%= paginate @diaries %>
         </div>
-        <div class="col-md-9 col-sm-9  col-xs-12">
+        <div class="col-md-6 col-sm-6  col-xs-12">
 		   <%= render 'users/user-diary', diaries: @diaries %>
+	    </div>
+	    <div class="col-md-3 col-sm-3 col-xs-12">
 	    </div>
 	</div>
 	    <div class="row">

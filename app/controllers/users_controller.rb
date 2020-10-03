@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @diaries = @user.diaries.page(params[:page]).reverse_order
+    @diaries = @user.diaries.page(params[:page]).reverse_order.per(4)
 
     @current_entry = Entry.where(user_id: current_user.id)
     @another_entry = Entry.where(user_id: @user.id)
